@@ -9,6 +9,10 @@ const notify = require('gulp-notify');
 const sass = require('gulp-sass');
 const plumber = require('gulp-plumber');
 const concat = require('gulp-concat');
+const historyApiFallback = require('connect-history-api-fallback');
+const firebase = require('firebase');
+const jquery = require('jquery');
+// const firebaseui = require('firebaseui');
 
 gulp.task('styles', () => {
 	return gulp.src('./dev/styles/**/*.scss')
@@ -38,7 +42,8 @@ gulp.task('bs', () => {
 	return browserSync.init({
 		server: {
 			baseDir: './'
-		}
+		},
+		middleware: [historyApiFallback()]
 	});
 });
 
