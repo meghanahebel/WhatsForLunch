@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import firebase from 'firebase';
 import {ajax} from 'jquery';
+import firebase from 'firebase';
 import {
   BrowserRouter as Router, Route, Link
   } from 'react-router-dom';
 
 import Navigation from './components/Navigation';
 import SignIn from './components/SignIn';
-import Countdown from './components/Countdown';
+import Results from './components/Results';
 
 
   // Initialize Firebase
@@ -127,42 +127,6 @@ const VotingButtons = (props) => {
     {props.cuisineInfo.name}
     </button>
   )
-}
-
-// RESULTS
-
-class Results extends React.Component {
-
-  componentDidMount() {
-    // But we have to send the 'user-key' via headers
-    ajax({
-      url: 'http://proxy.hackeryou.com',
-      dataType: 'json',
-      method:'GET',
-      data: {
-        reqUrl: 'https://developers.zomato.com/api/v2.1/cuisines',
-        params: {
-          lat: '40.74',
-          lon: '-74.004'
-        },
-        proxyHeaders: {
-          'user-key': '14bd8bcf070a8b8efbd5e88ccde13183'
-        },
-        xmlToJSON: false,
-        useCache: false
-      }
-    }).then(function(res) {
-      console.log(res)
-    });
-  }
-
-  render() {
-    return(
-      <div className="container results">
-          <Countdown />
-      </div>
-    )
-  }
 }
 
 
