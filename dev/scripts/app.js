@@ -8,7 +8,7 @@ import {
 
 import Navigation from './components/Navigation';
 import SignIn from './components/SignIn';
-import TimeRemaining from './components/TimeRemaining';
+import Countdown from './components/Countdown';
 
 
   // Initialize Firebase
@@ -164,21 +164,6 @@ class Results extends React.Component {
     )
   }
 }
-
-// COUNTDOWN
-
-class Countdown extends React.Component {
-
-  render() {
-    return(
-      <div className="countdown">
-        <h1>Time Remaining</h1>
-        <TimeRemaining />
-      </div>
-    )
-  }
-}
-
 
 
 // APP
