@@ -1,13 +1,8 @@
-import React from 'react'
-import {ajax} from 'jquery';
-import Countdown from './Countdown';
-import services from '../services';
+const services = {}
 
-export default class Results extends React.Component {
-    
-    componentDidMount() {
-    // But we have to send the 'user-key' via headers
-    ajax({
+services.getRestaurants = function() {
+    return
+        ajax({
         url: 'http://proxy.hackeryou.com',
         dataType: 'json',
         method:'GET',
@@ -28,13 +23,4 @@ export default class Results extends React.Component {
         console.log(res)
         // include transformation
     });
-    }
-
-    render() {
-    return(
-        <div className="container results">
-            <Countdown />
-        </div>
-    )
-    }
-}
+} 
