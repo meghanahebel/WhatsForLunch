@@ -6,6 +6,10 @@ import {
   BrowserRouter as Router, Route, Link
   } from 'react-router-dom';
 
+import Navigation from './components/Navigation';
+import SignIn from './components/SignIn';
+import TimeRemaining from './components/TimeRemaining';
+
 
   // Initialize Firebase
 var config = {
@@ -20,18 +24,6 @@ var config = {
 firebase.initializeApp(config);
 
 
-// NAVIGATION
-
-class Navigation extends React.Component {
-  render() {
-    return(
-      <div className = "container navigation">
-        <nav>This is the navigation</nav> 
-      </div>
-    )
-  }
-}
-
 // HOMEPAGE
 
 class HomePage extends React.Component {
@@ -44,18 +36,6 @@ class HomePage extends React.Component {
         <Link to={`/signin`}>Sign In</Link>
         <Link to={`/voting`}>Vote Now</Link>
         <Link to={`/results`}>Results</Link>
-      </div>
-    )
-  }
-}
-
-// SIGN IN
-
-class SignIn extends React.Component {
-  render() {
-    return (
-      <div className = "container signin">
-        <h2>This is the sign up part for firebase</h2>
       </div>
     )
   }
@@ -199,57 +179,7 @@ class Countdown extends React.Component {
   }
 }
 
-// TIME REMAINING
 
-class TimeRemaining extends React.Component {
-
-  constructor() {
-    super()
-    this.state = {
-      deadline: 'Fri Nov 24 2017 12:59:59 GMT-0500 (EST)'
-    }
-    this.initializeClock = this.initializeClock.bind(this);
-  }
-
-  // getTimeRemaining(deadline) {
-  //   let t = Date.parse(deadline) - Date.parse(new Date());
-  //   let seconds = Math.floor( (t/1000) % 60 );
-  //   let minutes = Math.floor( (t/1000/60) % 60 );
-  //   let hours = Math.floor( (t/(1000*60*60)) % 24 );
-  //   return {
-  //     'total': t,
-  //     'hours': hours,
-  //     'minutes': minutes,
-  //     'seconds': seconds
-  //   };
-  // }
-
-  initializeClock(deadline) {
-    let t = Date.parse(deadline) - Date.parse(new Date());
-    let timeinterval = setInterval(function(){
-        let seconds = Math.floor( (t/1000) % 60 );
-        let minutes = Math.floor( (t/1000/60) % 60 );
-        let hours = Math.floor( (t/(1000*60*60)) % 24 );
-        // this.setState({
-        //   // deadline: 
-        // })
-        if(t.total<=0){
-          clearInterval(timeinterval);
-        }
-    },1000);
-  }
-
-
-  render() {
-    return (
-      <div className = "timeremaining">
-        {this.initializeClock(this.state.deadline)}
-        <h3>Time Remaining</h3>
-        <h1>{this.state.deadline}</h1>
-      </div>
-    )
-  }
-}
 
 // APP
 
