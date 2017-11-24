@@ -9,6 +9,7 @@ import {
 import Navigation from './components/Navigation';
 import SignIn from './components/SignIn';
 import Results from './components/Results';
+import VotingButtons from './components/VotingButtons';
 
 
   // Initialize Firebase
@@ -114,19 +115,6 @@ class Voting extends React.Component {
     )
   }
 
-}
-
-// VotingButtons
-
-const VotingButtons = (props) => {
-  return (
-    <button 
-    className="cuisineButton"
-    onClick = {() => props.handleClick(props.cuisineKey)}
-    >
-    {props.cuisineInfo.name}
-    </button>
-  )
 }
 
 
