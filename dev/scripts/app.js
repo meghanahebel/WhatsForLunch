@@ -26,15 +26,17 @@ var config = {
 
 firebase.initializeApp(config);
 
+
 // APP
 
 class App extends React.Component {
+
   
     render() {
       return (
         <Router>
           <div>
-            <Navigation />
+            {/* <Navigation /> */}
             <Route exact path = "/" component = {HomePage} />
             <Route path = "/signin" component = {SignIn} />
             <Route path = "/voting" component = {Voting} />

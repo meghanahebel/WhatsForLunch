@@ -1,0 +1,46 @@
+.voting {
+    h1, h3 {
+        font-size: 3rem;
+    }
+    #voteCounter {
+        background: white;
+        color: #66C3FF;
+        border-radius: 30px;
+        padding: 5px 20px;
+    }
+    #voteMessage {
+        font-size: 2rem;
+    }
+
+    .cuisine {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        .cuisineButton {
+            background: white;
+            font-size: 1rem;
+            border: 1px solid white;
+            color: #66C3FF;
+            text-transform: uppercase;
+            border-radius: 10px;
+            padding: 10px 20px;
+            margin: 10px;
+        }
+        .cuisineButton:hover {
+            background: #09BC8A;
+            color: white;
+        }
+    }
+    .link {
+        background: white;
+        font-size: 1rem;
+        border: 1px solid white;
+        color: #66C3FF;
+        text-transform: uppercase;
+        border-radius: 10px;
+        padding: 10px 20px;
+        margin: 10px;
+    }
+    
+}

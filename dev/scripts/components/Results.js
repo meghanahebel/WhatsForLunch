@@ -1,39 +1,46 @@
-import React from 'react'
+import React from 'react';
+import ReactDOM from 'react-dom';
 import {ajax} from 'jquery';
 import Countdown from './Countdown';
 import services from '../services';
+import firebase from 'firebase';
+import ShowResults from './ShowResults';
+import TimeRemaining from './TimeRemaining';
 
 export default class Results extends React.Component {
-    
-    componentDidMount() {
-    // But we have to send the 'user-key' via headers
-    ajax({
-        url: 'http://proxy.hackeryou.com',
-        dataType: 'json',
-        method:'GET',
-        data: {
-        reqUrl: 'https://developers.zomato.com/api/v2.1/cuisines',
-        params: {
-            lat: '40.74',
-            lon: '-74.004'
-        },
-        proxyHeaders: {
-            'user-key': '14bd8bcf070a8b8efbd5e88ccde13183'
-        },
-        xmlToJSON: false,
-        useCache: false
+    constructor() {
+        super();
+        this.state = {
+            restaurants: [],
+            showResults: "",
+            deadline: ""
+        
         }
-    }).then(function(res) {
-        return res
-        console.log(res)
-        // include transformation
-    });
+        this.whenShowResults = this.whenShowResults.bind(this);
     }
 
+    componentWillMount() {
+        let showResults = firebase.database().ref('/triggerResults');
+        showResults.on('value', (snapshot)=> {
+            this.setState ({
+                showResults: snapshot.val(),
+            })
+        })
+
+    }
+    
+    whenShowResults() {
+        if(this.state.showResults.showResults === true) {
+            return(
+                <ShowResults showResults = {this.whenShowResults}/>
+            )
+        }
+    }
     render() {
     return(
         <div className="container results">
-            <Countdown />
+            <TimeRemaining inputDeadline = {this.state.deadline}/>
+            {this.whenShowResults()}
         </div>
     )
     }
